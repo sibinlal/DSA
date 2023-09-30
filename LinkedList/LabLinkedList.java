@@ -1,5 +1,7 @@
 package com.javalab.ds;
 
+
+
 public class LabLinkedList {
 
 	private Node head;
@@ -41,6 +43,10 @@ public class LabLinkedList {
 
 		if (index == 0) {
 			insertFirst(value);
+			return;
+		}
+
+		if(index > size){
 			return;
 		}
 
@@ -86,6 +92,7 @@ public class LabLinkedList {
 
 		Node lastTobeNode = get(size - 2);
 		lastTobeNode.next = null;
+		tail = lastTobeNode;
 		size--;
 	}
 
@@ -120,9 +127,9 @@ public class LabLinkedList {
 		System.out.println("\n list size is: " + size);
 	}
 
-	private class Node {
+	private static class Node {
 
-		private int data;
+		private final int data;
 		private Node next;
 
 		public Node(int data) {
@@ -136,6 +143,25 @@ public class LabLinkedList {
 		}
 	}
 
+}
+
+class Test {
+	public static void main(String[] args){
+		LabLinkedList list = new LabLinkedList();
+		list.insertFirst(5);
+		list.insert(10);
+		list.insert(8);
+		list.display();
+
+		list.deleteFirst();
+		list.display();
+
+		list.deleteLast();
+		list.display();
+
+		list.insertToIndex(20,1);
+		list.display();
+	}
 }
 
 
